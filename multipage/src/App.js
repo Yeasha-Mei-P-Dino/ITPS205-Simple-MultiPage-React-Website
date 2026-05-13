@@ -1,0 +1,95 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+// --- Page Components ---
+const Home = () => (
+  <div className="animate-fadeIn">
+    <h2 className="text-4xl font-bold text-emerald-700 mb-4">Welcome Home</h2>
+    <p className="text-violet-900 leading-relaxed">
+      Hello! This is the landing page.
+    </p>
+  </div>
+);
+
+const About = () => (
+  <div className="animate-fadeIn">
+    <h2 className="text-4xl font-bold text-violet-700 mb-4">About Us</h2>
+    <p className="text-emerald-900 leading-relaxed">
+       Welcome! This is the about page.
+    </p>
+  </div>
+);
+
+const Contact = () => (
+  <div className="animate-fadeIn">
+    <h2 className="text-4xl font-bold text-emerald-700 mb-4">Contact</h2>
+    <p className="text-violet-900 mb-6">Reach out to us for any inquiries.  Contact No. 0912 345 6789 </p>
+    <form className="space-y-4 max-w-sm">
+      <input 
+        type="text" 
+        placeholder="Your Name" 
+        className="w-full p-3 rounded-lg border-2 border-emerald-100 focus:border-violet-500 outline-none" 
+      />
+      <button className="bg-violet-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-emerald-600 transition-colors">
+        Send Message
+      </button>
+    </form>
+  </div>
+);
+
+// --- Main App Component ---
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="min-h-screen bg-emerald-50 font-sans">
+        
+        {/* Navigation Menu */}
+        <nav className="bg-white shadow-lg border-b-4 border-violet-500">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="flex justify-between items-center h-16">
+              <div className="text-2xl font-bold text-violet-600 tracking-tighter">
+                Router<span className="text-emerald-500">App</span>
+              </div>
+              
+              <div className="flex space-x-8">
+                <Link 
+                  to="/" 
+                  className="text-violet-900 hover:text-emerald-500 font-semibold transition-colors"
+                >
+                  Home
+                </Link>
+                <Link 
+                  to="/about" 
+                  className="text-violet-900 hover:text-emerald-500 font-semibold transition-colors"
+                >
+                  About
+                </Link>
+                <Link 
+                  to="/contact" 
+                  className="text-violet-900 hover:text-emerald-500 font-semibold transition-colors"
+                >
+                  Contact
+                </Link>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        {/* Dynamic Page Content */}
+        <main className="max-w-4xl mx-auto mt-12 p-8 bg-white rounded-2xl shadow-xl border border-emerald-100">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+
+        <footer className="text-center mt-12 text-emerald-800/50 text-sm">
+          Built with React Router, tailwind CSS Green, and Violet.
+        </footer>
+      </div>
+    </BrowserRouter>
+  );
+}
+
+export default App;
